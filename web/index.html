@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Parking Lot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button-group button {
+      padding: 0.6rem 1rem;
+      margin: 0.3rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #2563eb;
+      color: white;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .button-group button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .output {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #111827;
+      background-color: #e0f2fe;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🚗 Smart Parking Lot</h1>
+
+    <div class="input-group">
+      <input type="text" id="vehicleNumber" placeholder="Enter vehicle number" />
+    </div>
+
+    <div class="button-group">
+      <button onclick="park()">Park Vehicle</button>
+      <button onclick="exitVehicle()">Exit Vehicle</button>
+    </div>
+
+    <div id="output" class="output"></div>
+  </div>
+
+  <script>
+    function getVehicleNumber() {
+      return document.getElementById("vehicleNumber").value.trim();
+    }
+
+    function clearInput() {
+      document.getElementById("vehicleNumber").value = "";
+    }
+
+    function displayMessage(msg) {
+      document.getElementById("output").innerHTML = msg;
+    }
+
+    function park() {
+      const number = getVehicleNumber();
+      if (!number) {
+        displayMessage("❗ Please enter a valid vehicle number.");
+        return;
+      }
+
+      // Simulate backend logic
+      displayMessage(`✅ Vehicle <strong>${number}</strong> parked successfully.`);
+      clearInput();
+    }
+
+    function exitVehicle() {
+      const number = getVehicleNumber();
+      if (!number) {
+        displayMessage("❗ Please enter a valid vehicle number.");
+        return;
+      }
+
+      // Simulate backend logic
+      const charge = Math.floor(Math.random() * 100) + 20; // random ₹20–₹120
+      displayMessage(`💰 Vehicle <strong>${number}</strong> charged ₹${charge}.`);
+      clearInput();
+    }
+  </script>
+</body>
+</html>
